@@ -14,6 +14,7 @@
 #  limitations under the License.
 
 import os
+import sys
 import time
 import threading
 
@@ -32,8 +33,12 @@ from robot.libraries.BuiltIn import BuiltIn
 from .pygtk import _take_gtk_screenshot, _take_partial_gtk_screenshot, _take_gtk_screen_size, _grab_gtk_pb
 from .utils import _norm_path, _compression_value_conversion, _pil_quality_conversion
 
-from concurrent.futures import ThreadPoolExecutor
-from concurrent.futures.thread import _threads_queues
+if sys.version_info[0] < 3:
+    from concurrent.futures import ThreadPoolExecutor
+    from concurrent.futures.thread import _threads_queues
+else:
+    from futures3.thread import ThreadPoolExecutor
+    from futures3.thread import _threads_queues
 
 _THREAD_POOL = ThreadPoolExecutor()
 
