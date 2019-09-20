@@ -41,7 +41,7 @@ before_install:
     sudo dpkg -i libpangoft2-1.0-0_1.42.4-3_amd64.deb;
     sudo dpkg -i libpangocairo-1.0-0_1.42.4-3_amd64.deb;
     sudo dpkg -i libgtk-3-0_3.24.1-1ubuntu2_amd64.deb;
-    sudo dpkg -i gir1.2-pango-1.0_1.42.4-3_amd64.deb
+    sudo dpkg -i gir1.2-pango-1.0_1.42.4-3_amd64.deb;
     sudo dpkg -i gir1.2-gtk-3.0_3.24.1-1ubuntu2_amd64.deb;
     fi
 install:
