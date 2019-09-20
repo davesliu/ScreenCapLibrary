@@ -1,8 +1,5 @@
 futures; python_version == '2.7'
-PyGObject; python_version == '3.6'
 futures; python_version == '3.6'
-gobject; python_version == '3.7'
-PyGObject; python_version == '3.7'
 mss
 robotframework
 robotstatuschecker
