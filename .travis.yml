@@ -28,6 +28,7 @@ before_install:
     wget http://mirrors.kernel.org/ubuntu/pool/main/f/fribidi/libfribidi0_1.0.5-3_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/libpango-1.0-0_1.42.4-3_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/libgtk-3-0_3.24.1-1ubuntu2_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/a/atk1.0/libatk1.0-data_2.30.0-1_all.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/a/atk1.0/libatk1.0-0_2.30.0-1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/a/atk1.0/gir1.2-atk-1.0_2.30.0-1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/gir1.2-gtk-3.0_3.24.1-1ubuntu2_amd64.deb;
@@ -42,6 +43,7 @@ before_install:
     sudo dpkg -i libpango-1.0-0_1.42.4-3_amd64.deb;
     sudo dpkg -i libpangoft2-1.0-0_1.42.4-3_amd64.deb;
     sudo dpkg -i libpangocairo-1.0-0_1.42.4-3_amd64.deb;
+    sudo dpkg -i libatk1.0-data_2.30.0-1_all.deb;
     sudo dpkg -i libgtk-3-0_3.24.1-1ubuntu2_amd64.deb;
     sudo dpkg -i libatk1.0-0_2.30.0-1_amd64.deb;
     sudo dpkg -i gir1.2-atk-1.0_2.30.0-1_amd64.deb;
