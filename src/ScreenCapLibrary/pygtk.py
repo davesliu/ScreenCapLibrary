@@ -14,6 +14,7 @@
 #  limitations under the License.
 import cv2
 import numpy as np
+from PIL import Image
 from .utils import suppress_stderr
 try:
     from gtk import gdk
@@ -195,22 +196,10 @@ def _record_gtk_py3(path, fps, size_percentage, stop):
         vid = cv2.VideoWriter('%s' % path, fourcc, fps, (resized_width, resized_height))
     while not stop.isSet():
         pb = Gdk.pixbuf_get_from_window(window, 0, 0, width, height)
-        numpy_array = _convert_pixbuf_to_numpy(pb)
+        numpy_array = np.array(Image.frombytes("RGB", (width, height), pb.get_pixels()))
         resized_array = cv2.resize(numpy_array, dsize=(resized_width, resized_height), interpolation=cv2.INTER_AREA) \
             if size_percentage != 1 else numpy_array
         frame = cv2.cvtColor(resized_array,  cv2.COLOR_RGB2BGR)
         vid.write(frame)
     vid.release()
     cv2.destroyAllWindows()
-
-
-def _convert_pixbuf_to_numpy(pixbuf):
-    w, h, c, r = (pixbuf.get_width(), pixbuf.get_height(), pixbuf.get_n_channels(), pixbuf.get_rowstride())
-    a = np.frombuffer(pixbuf.get_pixels(), dtype=np.uint8)
-    if a.shape[0] == w * c * h:
-        return a.reshape((h, w, c))
-    else:
-        b = np.zeros((h, w * c), 'uint8')
-        for j in range(h):
-            b[j, :] = a[r * j:r * j + w * c]
-        return b.reshape((h, w, c))
