@@ -1,25 +1,24 @@
 language: python
 sudo: required
-dist: xenial
+dist: bionic
 services:
   - xvfb
 addons:
   apt:
     sources:
-      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ xenial universe multiverse'
+      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ bionic universe multiverse'
     update: true
 
 matrix:
   include:
     - python: "2.7"
-    - python: "3.5"
     - python: "3.6"
     - python: "3.7"
 
 install:
   - pip install -r requirements-dev.txt
   - if [[ $TRAVIS_PYTHON_VERSION < 3 ]]; then
-    sudo apt install -y python-gtk2;
+    sudo apt install -y python-gobject-2;
     wget http://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2;
     tar xf pygtk-2.24.0.tar.bz2;
     cd pygtk-2.24.0;
