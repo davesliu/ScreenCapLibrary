@@ -17,22 +17,22 @@ before_install:
   - if [[ $TRAVIS_PYTHON_VERSION < 3 ]]; then
     sudo apt install -y python-gtk2;
     else
-    wget http://ftp.br.debian.org/debian/pool/main/p/pygobject/python-gi_3.22.0-2_amd64.deb;
-    sudo dpkg -i python-gi_3.22.0-2_amd64.deb;
-    wget http://ftp.br.debian.org/debian/pool/main/p/pygobject-2/python-gobject-2_2.28.6-13+b1_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python-gi_3.32.0-1_amd64.deb;
+    sudo dpkg -i python-gi_3.32.0-1_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject-2/python-gobject-2_2.28.6-13+b1_amd64.deb;
     sudo dpkg -i python-gobject-2_2.28.6-13+b1_amd64.deb;
-    wget http://ftp.br.debian.org/debian/pool/main/p/pygobject/python-gobject_3.22.0-2_all.deb;
-    sudo dpkg -i python-gobject_3.22.0-2_all.deb;
-    wget http://ftp.br.debian.org/debian/pool/main/p/pycairo/python-cairo_1.16.2-1+b1_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python-gobject_3.32.0-1_all.deb;
+    sudo dpkg -i python-gobject_3.32.0-1_all.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pycairo/python-cairo_1.16.2-1+b1_amd64.deb;
     sudo dpkg -i python-cairo_1.16.2-1+b1_amd64.deb;
-    wget http://ftp.br.debian.org/debian/pool/main/p/pygobject/python-gi-cairo_3.22.0-2_amd64.deb;
-    sudo dpkg -i python-gi-cairo_3.22.0-2_amd64.deb;
-    wget http://ftp.br.debian.org/debian/pool/main/p/pygobject/python3-gi_3.22.0-2_amd64.deb;
-    sudo dpkg -i python3-gi_3.22.0-2_amd64.deb;
-    wget http://ftp.br.debian.org/debian/pool/main/p/pycairo/python3-cairo_1.16.2-1+b1_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python-gi-cairo_3.32.0-1_amd64.deb;
+    sudo dpkg -i python-gi-cairo_3.32.0-1_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python3-gi_3.32.0-1_amd64.deb;
+    sudo dpkg -i python3-gi_3.32.0-1_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pycairo/python3-cairo_1.16.2-1+b1_amd64.deb;
     sudo dpkg -i python3-cairo_1.16.2-1+b1_amd64.deb;
-    wget http://ftp.br.debian.org/debian/pool/main/p/pygobject/python3-gi-cairo_3.22.0-2_amd64.deb;
-    sudo dpkg -i python3-gi-cairo_3.22.0-2_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python3-gi-cairo_3.32.0-1_amd64.deb;
+    sudo dpkg -i python3-gi-cairo_3.32.0-1_amd64.deb;
     sudo apt install -y gir1.2-gtk-3.0;
     fi
 install:
