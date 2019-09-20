@@ -18,7 +18,19 @@ matrix:
 install:
   - pip install -r requirements-dev.txt
   - if [[ $TRAVIS_PYTHON_VERSION < 3 ]]; then
-    sudo apt install -y python-gobject-2;
+    curl 'http://cairographics.org/releases/py2cairo-1.10.0.tar.bz2' > "py2cairo.tar.bz2"
+    tar -xvf py2cairo.tar.bz2
+    cd py2cairo*
+    autoreconf -ivf
+    ./configure --prefix=/home/travis/virtualenv/python$TRAVIS_PYTHON_VERSION/ --disable-dependency-tracking
+    make
+    make install
+    curl 'http://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.6.tar.bz2' > 'pygobject.tar.bz2'
+    tar -xvf pygobject.tar.bz2
+    cd pygobject*
+    ./configure --prefix=/home/travis/virtualenv/python$TRAVIS_PYTHON_VERSION/ --disable-introspection
+    make
+    make install
     wget http://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2;
     tar xf pygtk-2.24.0.tar.bz2;
     cd pygtk-2.24.0;
@@ -45,6 +57,7 @@ install:
     wget http://mirrors.kernel.org/ubuntu/pool/main/a/atk1.0/gir1.2-atk-1.0_2.30.0-1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/gir1.2-gtk-3.0_3.24.1-1ubuntu2_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/gir1.2-pango-1.0_1.42.4-3_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo2-dev_1.15.12-1_amd64.deb;
     sudo dpkg -i python3-gi_3.30.1-1ubuntu1_amd64.deb;
     sudo dpkg -i python3-cairo_1.16.2-1build1_amd64.deb;
     sudo dpkg -i libcairo-gobject2_1.15.12-1_amd64.deb;
@@ -63,6 +76,7 @@ install:
     sudo dpkg -i gir1.2-atk-1.0_2.30.0-1_amd64.deb;
     sudo dpkg -i gir1.2-pango-1.0_1.42.4-3_amd64.deb;
     sudo dpkg -i gir1.2-gtk-3.0_3.24.1-1ubuntu2_amd64.deb;
+    sudo dpkg -i libcairo2-dev_1.15.12-1_amd64.deb;
     sudo apt install libgirepository1.0-dev;
     pip install gobject PyGObject;
     fi
