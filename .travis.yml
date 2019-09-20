@@ -25,6 +25,7 @@ before_install:
     wget http://mirrors.kernel.org/ubuntu/pool/main/f/fontconfig/libfontconfig1_2.13.0-5ubuntu3_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/libpangoft2-1.0-0_1.42.4-3_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/libpangocairo-1.0-0_1.42.4-3_amd64.deb;
+    wget http://mirrors.kernel.org/ubuntu/pool/main/f/fribidi/libfribidi0_1.0.5-3_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/libpango-1.0-0_1.42.4-3_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/libgtk-3-0_3.24.1-1ubuntu2_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/gir1.2-gtk-3.0_3.24.1-1ubuntu2_amd64.deb;
@@ -35,6 +36,7 @@ before_install:
     sudo dpkg -i libgtk-3-common_3.24.1-1ubuntu2_all.deb;
     sudo dpkg -i fontconfig-config_2.13.0-5ubuntu3_all.deb;
     sudo dpkg -i libfontconfig1_2.13.0-5ubuntu3_amd64.deb;
+    sudo dpkg -i libfribidi0_1.0.5-3_amd64.deb;
     sudo dpkg -i libpango-1.0-0_1.42.4-3_amd64.deb;
     sudo dpkg -i libpangoft2-1.0-0_1.42.4-3_amd64.deb;
     sudo dpkg -i libpangocairo-1.0-0_1.42.4-3_amd64.deb;
