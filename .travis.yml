@@ -41,6 +41,7 @@ install:
     make;
     make install;
     cd ..;
+    sudo apt install libgirepository1.0-dev;
     pip install PyGObject;
     else
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python3-gi_3.30.1-1ubuntu1_amd64.deb;
