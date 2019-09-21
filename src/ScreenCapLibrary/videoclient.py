@@ -25,11 +25,6 @@ try:
 except ImportError:
     Gdk = None
 
-try:
-    from gi.repository import GObject
-except ImportError:
-    GObject = None
-
 
 class VideoClient(Client):
 
@@ -92,7 +87,6 @@ class VideoClient(Client):
         if gdk:
             return self._record_gtk_py2(path, fps, size_percentage, stop)
         elif Gdk:
-            GObject.threads_init()
             return self._record_gtk_py3(path, fps, size_percentage, stop)
 
     @run_in_background
