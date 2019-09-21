@@ -64,6 +64,7 @@ install:
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/gir1.2-pango-1.0_1.42.4-3_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo-script-interpreter2_1.15.12-1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo2-dev_1.15.12-1_amd64.deb;
+    wget http://security.ubuntu.com/ubuntu/pool/main/g/glib2.0/libglib2.0-0_2.58.1-2ubuntu0.2_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gobject-introspection/libgirepository-1.0-1_1.58.0-1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gobject-introspection/libgirepository1.0-dev_1.58.0-1_amd64.deb;
     sudo dpkg -i python3-gi_3.30.1-1ubuntu1_amd64.deb;
@@ -86,6 +87,7 @@ install:
     sudo dpkg -i gir1.2-gtk-3.0_3.24.1-1ubuntu2_amd64.deb;
     sudo dpkg -i libcairo-script-interpreter2_1.15.12-1_amd64.deb;
     sudo dpkg -i libcairo2-dev_1.15.12-1_amd64.deb;
+    sudo dpkg -i libglib2.0-0_2.58.1-2ubuntu0.2_amd64.deb;
     sudo dpkg -i libgirepository-1.0-1_1.58.0-1_amd64.deb;
     sudo dpkg -i libgirepository1.0-dev_1.58.0-1_amd64.deb;
     pip install PyGObject==3.30.1;
