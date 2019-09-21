@@ -26,8 +26,6 @@ except ImportError:
     Gdk = None
 
 try:
-    from gi import require_version
-    require_version('Gdk', '3.0')
     from gi.repository import GObject
 except ImportError:
     GObject = None
