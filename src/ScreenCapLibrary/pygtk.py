@@ -153,12 +153,12 @@ def _take_partial_gtk_screenshot_py3(path, format, quality, left, top, width, he
 
 
 def _record_gtk(path, fps, size_percentage, stop):
-    if not gdk and not Gdk:
-        raise RuntimeError('PyGTK not installed/supported on this platform.')
-    if gdk:
-        return _record_gtk_py2(path, fps, size_percentage, stop)
-    elif Gdk:
-        return _record_gtk_py3(path, fps, size_percentage, stop)
+    #if not gdk and not Gdk:
+    raise RuntimeError('PyGTK not installed/supported on this platform.')
+    # if gdk:
+    #     return _record_gtk_py2(path, fps, size_percentage, stop)
+    # elif Gdk:
+    #     return _record_gtk_py3(path, fps, size_percentage, stop)
 
 
 def _record_gtk_py2(path, fps, size_percentage, stop):
