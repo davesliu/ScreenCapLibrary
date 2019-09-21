@@ -44,6 +44,7 @@ install:
     make install > /dev/null;
     cd ..;
     else
+    sudo apt install libgirepository1.0-dev;
     pip install PyGObject;
     fi
 script:
