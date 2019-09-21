@@ -14,6 +14,7 @@
 #  limitations under the License.
 import cv2
 import numpy as np
+import time
 from PIL import Image
 from .utils import suppress_stderr
 try:
@@ -201,5 +202,6 @@ def _record_gtk_py3(path, fps, size_percentage, stop):
             if size_percentage != 1 else numpy_array
         frame = cv2.cvtColor(resized_array,  cv2.COLOR_RGB2BGR)
         vid.write(frame)
+        time.sleep(0.01)
     vid.release()
     cv2.destroyAllWindows()
