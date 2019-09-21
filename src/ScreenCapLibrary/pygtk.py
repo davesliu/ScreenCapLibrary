@@ -153,12 +153,12 @@ def _take_partial_gtk_screenshot_py3(path, format, quality, left, top, width, he
 
 
 def _record_gtk(path, fps, size_percentage, stop):
-    #if not gdk and not Gdk:
-    raise RuntimeError('PyGTK not installed/supported on this platform.')
-    # if gdk:
-    #     return _record_gtk_py2(path, fps, size_percentage, stop)
-    # elif Gdk:
-    #     return _record_gtk_py3(path, fps, size_percentage, stop)
+    if not gdk and not Gdk:
+        raise RuntimeError('PyGTK not installed/supported on this platform.')
+    if gdk:
+        return _record_gtk_py2(path, fps, size_percentage, stop)
+    elif Gdk:
+        return _record_gtk_py3(path, fps, size_percentage, stop)
 
 
 def _record_gtk_py2(path, fps, size_percentage, stop):
@@ -196,7 +196,7 @@ def _record_gtk_py3(path, fps, size_percentage, stop):
     with suppress_stderr():
         vid = cv2.VideoWriter('%s' % path, fourcc, fps, (resized_width, resized_height))
     while not stop.isSet():
-        pb = Gdk.pixbuf_get_from_window(window, 0, 0, width, height)
+        pb = Gdk.pixbuf_get_from_window(window, *window.get_geometry())
         numpy_array = np.array(Image.frombytes("RGB", (width, height), pb.get_pixels()))
         resized_array = cv2.resize(numpy_array, dsize=(resized_width, resized_height), interpolation=cv2.INTER_AREA) \
             if size_percentage != 1 else numpy_array

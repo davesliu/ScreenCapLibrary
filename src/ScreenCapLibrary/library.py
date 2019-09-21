@@ -323,7 +323,11 @@ class ScreenCapLibrary:
         if len(self.started_recordings) == 0:
             raise Exception('No video recordings are started!')
         for recording in self.started_recordings:
-            recording.stop_video_recording()
+            try:
+                recording.stop_video_recording()
+            except RuntimeError as error:
+                del self.started_recordings[:]
+                raise error
             paths.append(recording.path)
         del self.started_recordings[:]
         return paths
