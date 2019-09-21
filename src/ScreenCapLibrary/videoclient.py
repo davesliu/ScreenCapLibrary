@@ -3,7 +3,7 @@ import threading
 from .client import Client, run_in_background
 from .utils import _norm_path, suppress_stderr
 from mss import mss
-from robot.utils import get_link_path, is_truthy
+from robot.utils import get_link_path, is_truthy, PY2
 from robot.api import logger
 from PIL import Image
 
@@ -84,9 +84,9 @@ class VideoClient(Client):
     def _record_gtk(self, path, fps, size_percentage, stop):
         if not gdk and not Gdk:
             raise RuntimeError('PyGTK not installed/supported on this platform.')
-        if gdk:
+        if PY2:
             return self._record_gtk_py2(path, fps, size_percentage, stop)
-        elif Gdk:
+        else:
             return self._record_gtk_py3(path, fps, size_percentage, stop)
 
     @run_in_background
