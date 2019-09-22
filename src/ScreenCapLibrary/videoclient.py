@@ -133,6 +133,7 @@ class VideoClient(Client):
             frame = cv2.cvtColor(resized_array, cv2.COLOR_RGB2BGR)
             vid.write(frame)
             del pb
+            del numpy_array
             gc.collect()
         vid.release()
         cv2.destroyAllWindows()
