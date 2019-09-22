@@ -1,9 +1,4 @@
 language: python
-python:
-  - "2.7"
-  - "3.7"
-virtualenv:
-  system_site_packages: true
 sudo: required
 dist: disco
 services:
@@ -13,13 +8,44 @@ addons:
     sources:
       - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ disco universe multiverse'
     update: true
-before_install:
-  - if [[ $TRAVIS_PYTHON_VERSION < 3 ]]; then
-    sudo apt install -y python-gtk2;
-    else
-    sudo apt install python-gi python-gi-cairo python3-gi python3-gi-cairo gir1.2-gtk-3.0;
-    fi
+
+matrix:
+  include:
+    - python: "2.7"
+    - python: "3.6"
+    - python: "3.7"
+
 install:
   - pip install -r requirements-dev.txt
+  - if [[ $TRAVIS_PYTHON_VERSION < 3 ]]; then
+    sudo apt-get install libcairo2-dev libgtk2.0-dev libglib2.0-dev libtool libpango1.0-dev libatk1.0-dev;
+    export VIRT_ROOT=/home/travis/virtualenv/python$TRAVIS_PYTHON_VERSION;
+    export PKG_CONFIG_PATH=$VIRT_ROOT/lib/pkgconfig;
+    wget http://www.cairographics.org/releases/py2cairo-1.10.0.tar.bz2;
+    tar xf py2cairo-1.10.0.tar.bz2;
+    cd py2cairo-1.10.0;
+    autoreconf -ivf;
+    ./configure --prefix=$VIRT_ROOT --disable-dependency-tracking > /dev/null;
+    make > /dev/null;
+    make install > /dev/null;
+    cd ..;
+    wget http://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.6.tar.bz2;
+    tar xf pygobject-2.28.6.tar.bz2;
+    cd pygobject-2.28.6;
+    ./configure --prefix=$VIRT_ROOT --disable-introspection > /dev/null;
+    make > /dev/null;
+    make install > /dev/null;
+    cd ..;
+    wget http://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2;
+    tar xf pygtk-2.24.0.tar.bz2;
+    cd pygtk-2.24.0;
+    ./configure --prefix=$VIRT_ROOT > /dev/null;
+    make > /dev/null;
+    make install > /dev/null;
+    cd ..;
+    else
+    sudo apt install python-gi python-gi-cairo python3-gi python3-gi-cairo gir1.2-gtk-3.0 libgirepository1.0-dev;
+    pip install PyGObject;
+    fi
 script:
-  - python atest/run.py -e no-xvfb atest;
+  - python atest/run.py -e no-xvfb atest
