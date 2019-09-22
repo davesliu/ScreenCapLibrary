@@ -1,17 +1,18 @@
 language: python
 sudo: required
-dist: disco
+dist: bionic
 services:
   - xvfb
 addons:
   apt:
     sources:
-      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ disco universe multiverse'
+      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ bionic universe multiverse'
     update: true
 
 matrix:
   include:
     - python: "2.7"
+    - python: "3.6"
     - python: "3.7"
 
 install:
