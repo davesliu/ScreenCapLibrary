@@ -1,4 +1,5 @@
 import threading
+import gc
 
 from .client import Client, run_in_background
 from .utils import _norm_path, suppress_stderr
@@ -22,7 +23,6 @@ try:
     from gi import require_version
     require_version('Gdk', '3.0')
     from gi.repository import Gdk
-    Gdk.threads_init()
 except ImportError:
     Gdk = None
 
@@ -132,6 +132,8 @@ class VideoClient(Client):
                 if size_percentage != 1 else numpy_array
             frame = cv2.cvtColor(resized_array, cv2.COLOR_RGB2BGR)
             vid.write(frame)
+            del pb
+            gc.collect()
         vid.release()
         cv2.destroyAllWindows()
 
