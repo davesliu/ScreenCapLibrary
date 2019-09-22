@@ -43,10 +43,7 @@ install:
     make install > /dev/null;
     cd ..;
     else
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/glibc/libc6_2.27-3ubuntu1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/u/util-linux/libmount1_2.34-0.1ubuntu2_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/glib2.0/libglib2.0-0_2.62.0-1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/gobject-introspection/gir1.2-glib-2.0_1.60.1-1_amd64.deb;
+    sudo apt install gir1.2-gtk-3.0;
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python3-gi_3.34.0-1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/p/pycairo/python3-cairo_1.16.2-1build1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo2_1.16.0-4_amd64.deb;
@@ -69,10 +66,6 @@ install:
     wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo2-dev_1.16.0-4_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gobject-introspection/libgirepository-1.0-1_1.60.1-1_amd64.deb;
     wget http://mirrors.kernel.org/ubuntu/pool/main/g/gobject-introspection/libgirepository1.0-dev_1.60.1-1_amd64.deb;
-    sudo dpkg -i libc6_2.27-3ubuntu1_amd64.deb;
-    sudo dpkg -i libmount1_2.34-0.1ubuntu2_amd64.deb;
-    sudo dpkg -i libglib2.0-0_2.62.0-1_amd64.deb;
-    sudo dpkg -i gir1.2-glib-2.0_1.60.1-1_amd64.deb;
     sudo dpkg -i python3-gi_3.34.0-1_amd64.deb;
     sudo dpkg -i python3-cairo_1.16.2-1build1_amd64.deb;
     sudo dpkg -i libcairo-gobject2_1.16.0-4_amd64.deb;
