@@ -1,5 +1,5 @@
 import threading
-import gc
+import time
 
 from .client import Client, run_in_background
 from .utils import _norm_path, suppress_stderr
@@ -123,18 +123,16 @@ class VideoClient(Client):
         height = window.get_height()
         resized_width = int(width * size_percentage)
         resized_height = int(height * size_percentage)
-        #with suppress_stderr():
-        vid = cv2.VideoWriter('%s' % path, fourcc, fps, (resized_width, resized_height))
+        with suppress_stderr():
+            vid = cv2.VideoWriter('%s' % path, fourcc, fps, (resized_width, resized_height))
         while not stop.isSet():
-            pb = Gdk.pixbuf_get_from_window(window, 0, 0, width, height)
-            numpy_array = np.array(Image.frombytes("RGB", (width, height), pb.get_pixels()))
-            resized_array = cv2.resize(numpy_array, dsize=(resized_width, resized_height), interpolation=cv2.INTER_AREA) \
-                if size_percentage != 1 else numpy_array
-            frame = cv2.cvtColor(resized_array, cv2.COLOR_RGB2BGR)
-            vid.write(frame)
-            del pb
-            del numpy_array
-            gc.collect()
+            time.sleep(0.001)
+            # pb = Gdk.pixbuf_get_from_window(window, 0, 0, width, height)
+            # numpy_array = np.array(Image.frombytes("RGB", (width, height), pb.get_pixels()))
+            # resized_array = cv2.resize(numpy_array, dsize=(resized_width, resized_height), interpolation=cv2.INTER_AREA) \
+            #     if size_percentage != 1 else numpy_array
+            # frame = cv2.cvtColor(resized_array, cv2.COLOR_RGB2BGR)
+            # vid.write(frame)
         vid.release()
         cv2.destroyAllWindows()
 
