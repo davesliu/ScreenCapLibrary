@@ -123,8 +123,8 @@ class VideoClient(Client):
         height = window.get_height()
         resized_width = int(width * size_percentage)
         resized_height = int(height * size_percentage)
-        with suppress_stderr():
-            vid = cv2.VideoWriter('%s' % path, fourcc, fps, (resized_width, resized_height))
+        #with suppress_stderr():
+        vid = cv2.VideoWriter('%s' % path, fourcc, fps, (resized_width, resized_height))
         while not stop.isSet():
             pb = Gdk.pixbuf_get_from_window(window, 0, 0, width, height)
             numpy_array = np.array(Image.frombytes("RGB", (width, height), pb.get_pixels()))
