@@ -43,52 +43,8 @@ install:
     make install > /dev/null;
     cd ..;
     else
-    sudo apt install gir1.2-gtk-3.0;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python3-gi_3.34.0-1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pycairo/python3-cairo_1.16.2-1build1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo2_1.16.0-4_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo-gobject2_1.16.0-4_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pygobject/python3-gi-cairo_3.34.0-1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/libgtk-3-common_3.24.1-1ubuntu2_all.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/f/fontconfig/fontconfig-config_2.13.1-2ubuntu2_all.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/f/fontconfig/libfontconfig1_2.13.1-2ubuntu2_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/libpangoft2-1.0-0_1.42.4-7_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/libpangocairo-1.0-0_1.42.4-7_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/f/fribidi/libfribidi0_1.0.5-3.1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/libpango-1.0-0_1.42.4-7_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/libgtk-3-0_3.24.11-1ubuntu1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/a/atk1.0/libatk1.0-data_2.34.0-1_all.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/a/atk1.0/libatk1.0-0_2.34.0-1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/a/atk1.0/gir1.2-atk-1.0_2.34.0-1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/gtk+3.0/gir1.2-gtk-3.0_3.24.11-1ubuntu1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/p/pango1.0/gir1.2-pango-1.0_1.42.4-7_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo-script-interpreter2_1.16.0-4_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/c/cairo/libcairo2-dev_1.16.0-4_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/gobject-introspection/libgirepository-1.0-1_1.60.1-1_amd64.deb;
-    wget http://mirrors.kernel.org/ubuntu/pool/main/g/gobject-introspection/libgirepository1.0-dev_1.60.1-1_amd64.deb;
-    sudo dpkg -i python3-gi_3.34.0-1_amd64.deb;
-    sudo dpkg -i python3-cairo_1.16.2-1build1_amd64.deb;
-    sudo dpkg -i libcairo-gobject2_1.16.0-4_amd64.deb;
-    sudo dpkg -i libcairo2_1.16.0-4_amd64.deb;
-    sudo dpkg -i python3-gi-cairo_3.34.0-1_amd64.deb;
-    sudo dpkg -i libgtk-3-common_3.24.1-1ubuntu2_all.deb;
-    sudo dpkg -i fontconfig-config_2.13.1-2ubuntu2_all.deb;
-    sudo dpkg -i libfontconfig1_2.13.1-2ubuntu2_amd64.deb;
-    sudo dpkg -i libfribidi0_1.0.5-3.1_amd64.deb;
-    sudo dpkg -i libpango-1.0-0_1.42.4-7_amd64.deb;
-    sudo dpkg -i libpangoft2-1.0-0_1.42.4-7_amd64.deb;
-    sudo dpkg -i libpangocairo-1.0-0_1.42.4-7_amd64.deb;
-    sudo dpkg -i libatk1.0-data_2.34.0-1_all.deb;
-    sudo dpkg -i libgtk-3-0_3.24.11-1ubuntu1_amd64.deb;
-    sudo dpkg -i libatk1.0-0_2.34.0-1_amd64.deb;
-    sudo dpkg -i gir1.2-atk-1.0_2.34.0-1_amd64.deb;
-    sudo dpkg -i gir1.2-pango-1.0_1.42.4-7_amd64.deb;
-    sudo dpkg -i gir1.2-gtk-3.0_3.24.11-1ubuntu1_amd64.deb;
-    sudo dpkg -i libcairo-script-interpreter2_1.16.0-4_amd64.deb;
-    sudo dpkg -i libcairo2-dev_1.16.0-4_amd64.deb;
-    sudo dpkg -i libgirepository-1.0-1_1.60.1-1_amd64.deb;
-    sudo dpkg -i libgirepository1.0-dev_1.60.1-1_amd64.deb;
-    pip install PyGObject;
+    sudo apt install libgirepository1.0-dev libcairo2-dev python-gi python-gi-cairo python3-gi python3-gi-cairo gir1.2-gtk-3.0;
+    pip install pycairo PyGObject;
     fi
 script:
   - python atest/run.py -e no-xvfb atest
