@@ -1,12 +1,12 @@
 language: python
 sudo: required
-dist: disco
+dist: eoan
 services:
   - xvfb
 addons:
   apt:
     sources:
-      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ disco universe multiverse'
+      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ eoan universe multiverse'
     update: true
 
 matrix:
