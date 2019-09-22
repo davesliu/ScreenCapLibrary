@@ -1,12 +1,12 @@
 language: python
 sudo: required
-dist: xenial
+dist: disco
 services:
   - xvfb
 addons:
   apt:
     sources:
-      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ xenial universe multiverse'
+      - sourceline: 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ disco universe multiverse'
     update: true
 
 matrix:
