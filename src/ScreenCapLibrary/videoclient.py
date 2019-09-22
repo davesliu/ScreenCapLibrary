@@ -21,10 +21,10 @@ except ImportError:
 try:
     from gi import require_version
     require_version('Gdk', '3.0')
-    from gi.repository import Gdk, GObject
+    from gi.repository import Gdk
+    Gdk.threads_init()
 except ImportError:
     Gdk = None
-    GObject = None
 
 
 class VideoClient(Client):
@@ -88,7 +88,6 @@ class VideoClient(Client):
         if PY2:
             return self._record_gtk_py2(path, fps, size_percentage, stop)
         else:
-            GObject.threads_init()
             return self._record_gtk_py3(path, fps, size_percentage, stop)
 
     @run_in_background
@@ -127,7 +126,7 @@ class VideoClient(Client):
         with suppress_stderr():
             vid = cv2.VideoWriter('%s' % path, fourcc, fps, (resized_width, resized_height))
         while not stop.isSet():
-            pb = Gdk.pixbuf_get_from_window(window, *window.get_geometry())
+            pb = Gdk.pixbuf_get_from_window(window, 0, 0, width, height)
             numpy_array = np.array(Image.frombytes("RGB", (width, height), pb.get_pixels()))
             resized_array = cv2.resize(numpy_array, dsize=(resized_width, resized_height), interpolation=cv2.INTER_AREA) \
                 if size_percentage != 1 else numpy_array
