@@ -1,6 +1,6 @@
 language: python
 sudo: required
-dist: disco
+dist: bionic
 services:
   - xvfb
 addons:
